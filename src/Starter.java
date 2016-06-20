@@ -18,18 +18,11 @@ public class Starter {
     private static int pageLoadersThreadsCount;
 
     public static void main(String[] args) throws InterruptedException {
-        PageData pageData = new PageData(
-                                    "http://zaycev.net/artist/130985?page=3", // http://zaycev.net/artist/73481?page=18");
-                // http://zaycev.net/artist/510619
-                                    "c:\\Media\\Music\\TNMK\\",
-                                    "http://cdndl.zaycev.net/",
-                                    "_(zaycev.net).mp3");
-
         queueCapacity = 5;
         queue = new LinkedBlockingDeque<String>(queueCapacity);
 
 
-        LinkProducer producer = new LinkProducer(pageData, queue);
+        LinkProducer producer = new LinkProducer(queue);
         pagesCount = 10;
         pageLoadersThreadsCount = 3;
         producer.start(pagesCount, pageLoadersThreadsCount);

@@ -1,20 +1,15 @@
 package ua.di1.producer;
 
-import sun.nio.ch.ThreadPool;
-import ua.di1.common.PageData;
-
 import java.util.concurrent.*;
 
 public class LinkProducer {
 
-    private final PageData pageData;
     private final BlockingQueue queue;
     private ExecutorService executorService;
     private int pagesCount;
     private int threadsCount;
 
-    public LinkProducer(PageData pageData, BlockingQueue queue) {
-        this.pageData = pageData;
+    public LinkProducer(BlockingQueue queue) {
         this.queue = queue;
     }
 
